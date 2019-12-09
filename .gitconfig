@@ -1,0 +1,19 @@
+[user]
+	name = Gerard Heshusius
+	email = gerard.heshusius@qps.nl
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[alias]
+	lg = log --oneline --graph --decorate 
+	st = status
+[color]
+	ui = true
+[core]
+	autocrlf = true
+[merge]
+	tool = kdiff3
+[mergetool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
