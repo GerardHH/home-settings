@@ -4,8 +4,8 @@ set number relativenumber
 
 set tabstop=4
 set shiftwidth=4
-set expandtab 
-set smarttab 
+set expandtab
+set smarttab
 
 set list listchars=tab:»·,trail:·
 set list
