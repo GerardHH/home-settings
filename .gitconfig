@@ -1,6 +1,8 @@
 [user]
     name = Gerard Heshusius
     email = gerard.heshusius@qps.nl
+[diff]
+    wsErrorHighlight = all
 [difftool "sourcetree"]
     cmd = '' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
