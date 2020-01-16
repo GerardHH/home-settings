@@ -16,6 +16,7 @@
     ui = true
 [core]
     autocrlf = true
+    editor = vi
 [merge]
     tool = kdiff3-linux
 [mergetool "kdiff3-windows"]
