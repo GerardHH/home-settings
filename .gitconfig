@@ -1,25 +1,25 @@
-[user]
-    name = Gerard Heshusius
-    email = gerard.heshusius@qps.nl
-[diff]
-    wsErrorHighlight = all
-[difftool "sourcetree"]
-    cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-    cmd = "'' "
-    trustExitCode = true
 [alias]
+    addw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -
     lg = log --oneline --graph --decorate 
     st = status
-    addw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -
 [color]
     ui = true
 [core]
     autocrlf = true
     editor = vi
+[diff]
+    wsErrorHighlight = all
+[difftool "sourcetree"]
+    cmd = '' \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = kdiff3-linux
-[mergetool "kdiff3-windows"]
-    path = C:/Program Files/KDiff3/kdiff3.exe
 [mergetool "kdiff3-linux"]
     path = /usr/bin/kdiff3
+[mergetool "kdiff3-windows"]
+    path = C:/Program Files/KDiff3/kdiff3.exe
+[mergetool "sourcetree"]
+    cmd = "'' "
+    trustExitCode = true
+[user]
+    email = gerard.heshusius@qps.nl
+    name = Gerard Heshusius
