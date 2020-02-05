@@ -13,6 +13,8 @@ set list
 syntax on
 colorscheme evening
 
+set spell
+
 :set hlsearch
 
 :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
