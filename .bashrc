@@ -11,6 +11,7 @@ set -o vi
 
 if [[ $(uname) =~ MINGW*|CYGWIN*|MSYS* ]]; then
     alias python='winpty python.exe';
+    return;
 fi
 
 # Path to the bash it configuration
