@@ -6,6 +6,9 @@ case $- in
     *) return;;
 esac
 
+alias vi=vim
+set -o vi
+
 # Path to the bash it configuration
 export BASH_IT="/home/gerard/.bash_it"
 
