@@ -9,6 +9,10 @@ esac
 alias vi=vim
 set -o vi
 
+if [[ $(uname) =~ MINGW*|CYGWIN*|MSYS* ]]; then
+    alias python='winpty python.exe';
+fi
+
 # Path to the bash it configuration
 export BASH_IT="/home/$(whoami)/.bash_it";
 
