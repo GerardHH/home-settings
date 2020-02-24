@@ -1,6 +1,7 @@
 [alias]
     addw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -
-    lg = log --oneline --graph --decorate 
+    current = rev-parse --abbrev-ref HEAD
+    lg = !export GIT_CURRENT_BRANCH=$(git current) && git log ${GIT_CURRENT_BRANCH} --oneline --graph --decorate --remotes=*/${GIT_CURRENT_BRANCH}
     st = status
 [color]
     ui = true
