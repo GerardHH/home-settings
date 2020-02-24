@@ -3,6 +3,7 @@
     current = rev-parse --abbrev-ref HEAD
     lg = !export GIT_CURRENT_BRANCH=$(git current) && git log ${GIT_CURRENT_BRANCH} --oneline --graph --decorate --remotes=*/${GIT_CURRENT_BRANCH}
     st = status
+    unstage = reset HEAD --
 [color]
     ui = true
 [core]
