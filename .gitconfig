@@ -1,8 +1,10 @@
 [alias]
     addw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -
     current = rev-parse --abbrev-ref HEAD
-    lg = !export GIT_CURRENT_BRANCH=$(git current) && git log ${GIT_CURRENT_BRANCH} --oneline --graph --decorate --remotes=*/${GIT_CURRENT_BRANCH}
     lc = show --name-status HEAD
+    lg = !export GIT_CURRENT_BRANCH=$(git current) && git log ${GIT_CURRENT_BRANCH} --oneline --graph --decorate --remotes=*/${GIT_CURRENT_BRANCH}
+    pc = !export GIT_CURRENT_BRANCH=$(git current) && git push origin ${GIT_CURRENT_BRANCH}
+    pcf = !git pc --force
     ro = !export GIT_CURRENT_BRANCH=$(git current) && git reset --hard origin/${GIT_CURRENT_BRANCH}
     st = status
     unstage = reset HEAD --
