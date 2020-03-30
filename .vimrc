@@ -11,7 +11,10 @@ set list listchars=tab:»·,trail:·
 set list
 
 syntax on
-colorscheme evening
+
+if has('win64')
+    colorscheme evening
+endif
 
 set spell
 
