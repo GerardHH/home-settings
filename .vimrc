@@ -1,5 +1,8 @@
 set encoding=utf8
 
+" Enable syntax highlighting
+syntax on
+
 set number relativenumber
 
 set tabstop=4
@@ -9,8 +12,6 @@ set smarttab
 
 set list listchars=tab:»·,trail:·
 set list
-
-syntax on
 
 if has('win64')
     colorscheme evening
