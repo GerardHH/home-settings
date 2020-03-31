@@ -26,6 +26,12 @@ set spell
 " Highlight search results
 :set hlsearch
 
+" Finding files:
+" Add all subdirectories to path, allowing for searching through them
+set path+=**
+" Display all matching files when we tab complete
+set wildmenu
+
 " Short keys:
 " Enable highlight line
 :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
