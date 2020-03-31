@@ -31,10 +31,12 @@ set spell
 " Highlight search results
 :set hlsearch
 
+" Short keys:
 " Enable highlight line
 :hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
+" GUI:
 " Set readable fonts for every OS
 if has("gui_gtk2")
     set guifont=Inconsolata\ 12
