@@ -20,11 +20,6 @@ set smarttab
 set list listchars=tab:»·,trail:·
 set list
 
-" Set evening color scheme on windows
-if has('win64')
-    colorscheme evening
-endif
-
 " Enable spellcheck
 set spell
 
@@ -37,6 +32,10 @@ set spell
 :nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " GUI:
+" Set evening color scheme on windows
+if has('win64')
+    colorscheme evening
+endif
 " Set readable fonts for every OS
 if has("gui_gtk2")
     set guifont=Inconsolata\ 12
