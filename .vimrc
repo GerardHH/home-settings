@@ -1,6 +1,9 @@
 " Use UTF-8 encoding
 set encoding=utf8
 
+" Stop being compatible with Vi
+set nocompatible
+
 " Enable syntax highlighting
 syntax on
 
