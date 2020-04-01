@@ -5,6 +5,7 @@
     lg = !git log $(git cb) --oneline --graph --decorate --remotes=*/$(git cb)
     pc = !git push origin $(git cb)
     pcf = !git pc --force
+    reoc = !git rebase --onto $(git cb) GH/vscode-environment^ GH/vscode-environment
     ro = !git reset --hard origin/$(git cb)
     st = status
     unstage = reset HEAD --
