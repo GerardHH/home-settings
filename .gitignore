@@ -3,5 +3,6 @@
 !.bashrc
 !.gitconfig
 !.gitignore
+!.vim/
 !.vimrc
 !vimfiles/
