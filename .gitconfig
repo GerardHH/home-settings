@@ -1,5 +1,5 @@
 [alias]
-    addw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -
+    aww = !git diff --ignore-all-space --no-color "$@" | git apply --cached --ignore-whitespace
     cb = rev-parse --abbrev-ref HEAD
     lc = show --name-status HEAD
     lg = !git log $(git cb) --oneline --graph --decorate --remotes=*/$(git cb)
