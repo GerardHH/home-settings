@@ -1,4 +1,5 @@
 [alias]
+    aw = !git add -A && git diff --cached --ignore-all-space | git apply --cached -R
     aww = !git diff --ignore-all-space --no-color "$@" | git apply --cached --ignore-whitespace
     cb = rev-parse --abbrev-ref HEAD
     lc = show --name-status HEAD
