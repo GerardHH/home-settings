@@ -2,6 +2,7 @@
     aw = !git add -A && git diff --cached --ignore-all-space | git apply --cached -R
     aww = !git diff --ignore-all-space --no-color "$@" | git apply --cached --ignore-whitespace
     cb = rev-parse --abbrev-ref HEAD
+    ce = cherry-pick GH/vscode-environment
     lc = show --name-status HEAD
     lg = !git log $(git cb) --oneline --graph --decorate --remotes=*/$(git cb)
     pc = !git push origin $(git cb)
