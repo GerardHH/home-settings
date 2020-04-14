@@ -1,15 +1,27 @@
 [alias]
+    # Add White space (Commit only white space changes)
     aw = !git add -A && git diff --cached --ignore-all-space | git apply --cached -R
+    # Add Without White space (Commit only non white space changes)
     aww = !git diff --ignore-all-space --no-color "$@" | git apply --cached --ignore-whitespace
+    # Current Branch (Print current branch name)
     cb = rev-parse --abbrev-ref HEAD
+    # Cherry-pick Environment
     ce = cherry-pick GH/vscode-environment
+    # List Current (List all changes on HEAD)
     lc = show --name-status HEAD
+    # LoG (Pretty print the Git tree based on current branch and its remote of the same name)
     lg = !git log $(git cb) --oneline --graph --decorate --remotes=*/$(git cb)
+    # Push Current (Push current branch)
     pc = !git push origin $(git cb)
+    # Push Current Force (Force Push current branch)
     pcf = !git pc --force
+    # Rebase Environment Onto Current (Rebase vscode environment onto current branch)
     reoc = !git rebase --onto $(git cb) GH/vscode-environment^ GH/vscode-environment
+    # Reset Origin
     ro = !git reset --hard origin/$(git cb)
+    # STatus
     st = status
+    # Unstage (Unstage all changes)
     u = reset HEAD --
 [color]
     ui = true
