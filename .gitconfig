@@ -1,4 +1,8 @@
 [alias]
+    # Amend (Amend staged changes)
+    a = commit --amend --no-edit
+    # Amend All (Amend staged and unstaged changes)
+    aa = !git a --all
     # AutoSquash (Autosquash commits interactively)
     as = rebase -i --autosquash
     # Add White space (Commit only white space changes)
