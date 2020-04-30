@@ -1,4 +1,6 @@
 [alias]
+    # AutoSquash (Autosquash commits interactively)
+    as = rebase -i --autosquash
     # Add White space (Commit only white space changes)
     aw = !git add -A && git diff --cached --ignore-all-space | git apply --cached -R
     # Add Without White space (Commit only non white space changes)
