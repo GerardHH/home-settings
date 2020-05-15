@@ -6,7 +6,7 @@ case $- in
     *) return;;
 esac
 
-alias vi=vim
+alias vi=nvim
 set -o vi
 
 if [[ $(uname) =~ MINGW*|CYGWIN*|MSYS* ]]; then
