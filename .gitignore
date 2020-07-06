@@ -5,4 +5,5 @@
 !.gitignore
 !.vim/
 !.vimrc
+!bin/
 !vimfiles/
