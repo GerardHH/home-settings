@@ -13,6 +13,10 @@
     cb = rev-parse --abbrev-ref HEAD
     # Cherry-pick Environment
     ce = cherry-pick GH/vscode-environment
+    # Fixup
+    f = commit --fixup
+    # Fixup All
+    fa = commit --all --fixup
     # List Current (List all changes on HEAD)
     lc = show --name-status HEAD
     # LoG (Pretty print the Git tree based on current branch and its remote of the same name)
