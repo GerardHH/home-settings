@@ -13,6 +13,10 @@
     cb = rev-parse --abbrev-ref HEAD
     # Cherry-pick Environment
     ce = cherry-pick GH/vscode-environment
+    # Commit Message
+    cm = commit -m
+    # Commit Message All
+    cma = commit -am
     # Fixup
     f = commit --fixup
     # Fixup All
