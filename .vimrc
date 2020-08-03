@@ -20,9 +20,6 @@ set smarttab
 set list listchars=tab:»·,trail:·
 set list
 
-" Enable spellcheck
-set spell
-
 " Highlight search results
 :set hlsearch
 
