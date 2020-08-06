@@ -14,6 +14,7 @@
     push-current-force = !git push-current --force
     rebase-autosquash = rebase -i --autosquash
     rebase-environment-onto-current = !git rebase --onto $(git cb) GH/vscode-environment^ GH/vscode-environment
+    rebase-interactive = rebase --interactive
     reset-origin = !git reset --hard origin/$(git current-branch-name)
     unstage-all = reset HEAD --
 [color]
