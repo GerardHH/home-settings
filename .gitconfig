@@ -1,18 +1,18 @@
 [alias]
-    add-whitespace-changes = !git add -A && git diff --cached --ignore-all-space | git apply --cached -R
+    add-whitespace-changes = !git add -A && git diff --cached --ignore-all-space | git apply --cached --reverse
     add-without-whitespace-changes = !git diff --ignore-all-space --no-color "$@" | git apply --cached --ignore-whitespace
     cherry-pick-environment = cherry-pick GH/vscode-environment
     commit-amend-no-edit = commit --amend --no-edit
     commit-amend-no-edit-all = !git commit-amend-no-edit --all
     commit-fixup = commit --fixup
     commit-fixup-all = commit --all --fixup
-    commit-message = commit -m
-    commit-message-all = commit -am
+    commit-message = commit --message
+    commit-message-all = commit --all --message
     current-branch-name = rev-parse --abbrev-ref HEAD
     list-tree = !git log $(git current-branch-name) --oneline --graph --decorate --remotes=*/$(git current-branch-name)
     push-current = !git push origin $(git current-branch-name)
     push-current-force = !git push-current --force
-    rebase-autosquash = rebase -i --autosquash
+    rebase-autosquash = rebase --interactive --autosquash
     rebase-environment-onto-current = !git rebase --onto $(git cb) GH/vscode-environment^ GH/vscode-environment
     rebase-interactive = rebase --interactive
     reset-origin = !git reset --hard origin/$(git current-branch-name)
