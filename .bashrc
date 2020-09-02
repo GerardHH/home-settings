@@ -38,3 +38,6 @@ export SCM_CHECK=true
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+
+# Load bash completion
+source /usr/share/bash-completion/bash_completion
