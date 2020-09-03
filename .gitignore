@@ -6,5 +6,5 @@
 !.profile
 !.vim/
 !.vimrc
-!bin/
+!bin/upgrade-all
 !vimfiles/
