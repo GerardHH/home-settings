@@ -41,3 +41,9 @@ source "$BASH_IT"/bash_it.sh
 
 # Load bash completion
 source /usr/share/bash-completion/bash_completion
+
+# Raven env
+source ~/.profile
+
+source ~/.nvm/nvm.sh
+nvm use v4.5.0
