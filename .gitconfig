@@ -10,7 +10,7 @@
     commit-message-all = commit --all --message
     current-branch-name = rev-parse --abbrev-ref HEAD
     list-tree = !git log $(git current-branch-name) --oneline --graph --decorate --remotes=*/$(git current-branch-name)
-    push-current = !git push origin $(git current-branch-name)
+    push-current = !git push $(git remote) $(git current-branch-name)
     push-current-force = !git push-current --force
     rebase-autosquash = rebase --interactive --autosquash
     rebase-environment-onto-current = !git rebase --onto $(git cb) GH/vscode-environment^ GH/vscode-environment
