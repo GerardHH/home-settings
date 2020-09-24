@@ -11,7 +11,8 @@
 !vimfiles/
 
 # Raven
-!bin/env.py
 !bin/disable_supervision.py
+!bin/env.py
 !bin/start_system.py
 !bin/start_tango-CR12.py
+!bin/sync_crx.py
