@@ -15,6 +15,7 @@ if [[ $(uname) =~ MINGW*|CYGWIN*|MSYS* ]]; then
 fi
 
 export PATH="~/bin:$PATH";
+export PYTHONPATH="${PYTHONPATH}:~/bin"
 
 # Path to the bash it configuration
 export BASH_IT="/home/$(whoami)/.bash_it";

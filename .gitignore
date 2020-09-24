@@ -9,3 +9,6 @@
 !bin/json_tools.py
 !bin/upgrade-all
 !vimfiles/
+
+# Raven
+!bin/env.py
