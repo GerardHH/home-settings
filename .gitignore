@@ -12,3 +12,4 @@
 
 # Raven
 !bin/env.py
+!bin/disable_supervision.py
