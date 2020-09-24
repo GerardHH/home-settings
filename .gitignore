@@ -14,3 +14,4 @@
 !bin/env.py
 !bin/disable_supervision.py
 !bin/start_system.py
+!bin/start_tango-CR12.py
