@@ -4,15 +4,18 @@ from collections.abc import Mapping
 from os import getcwd
 from shutil import copyfile
 from sys import argv, stderr, stdout
+from typing import Iterable, Tuple, Union
 import argparse
 import json
 import os.path
 
 # TODO: Add check if json is installed and report error if it isn't
 # TODO: Multiple objects for --add? Now it results in a cryptic error
-# TODO: Add search on attribute in JSON list for --query
 # TODO: Add check if file is readable JSON
 # TODO: Document arguments of functions
+
+
+__JSON_TYPES = Union[bool, dict, float, int, list, str]
 
 
 def __add(object, addition, verbose):
@@ -35,6 +38,37 @@ def __backup(path, verbose):
         copyfile(path, backup_path)
     else:
         print('Backup already exists, ignoring...')
+
+
+def __find(root: __JSON_TYPES, attr_value: str, verbose: bool) -> Tuple[bool, __JSON_TYPES]:
+    ''' Find an attribute and return its parent. '''
+    __verbose_print('Finding attribute value: {}'.format(attr_value), verbose)
+    __verbose_print('Current value: {}'.format(root), verbose, False)
+
+    if isinstance(root, bool):
+        return (str(root).lower == attr_value.lower(), root)
+
+    elif isinstance(root, dict):
+        for value in root.values():
+            __verbose_print('Searching in: {}'.format(value), verbose, False)
+            found, object = __find(root=value, attr_value=attr_value, verbose=verbose)
+            if found:
+                return (found, object if isinstance(object, dict) or isinstance(object, list) else root)
+        return (False, root)
+
+    elif isinstance(root, float) or isinstance(root, int):
+        return (str(root) == attr_value, root)
+
+    elif isinstance(root, list):
+        for value in root:
+            __verbose_print('Searching in: {}'.format(value), verbose, False)
+            found, object = __find(root=value, attr_value=attr_value, verbose=verbose)
+            if found:
+                return (found, object)
+        return (False, root)
+
+    elif isinstance(root, str):
+        return (root == attr_value, root)
 
 
 def __is_valid_file(path):
@@ -81,7 +115,7 @@ def __verbose_print(printable, verbose, heading=True):
             print(printable, file=stderr)
 
 
-def json_tools(file, add=None, backup=False, print_result=False, query=None, verbose=False, write=False):
+def json_tools(file, add=None, backup=False, find=None, print_result=False, query=None, verbose=False, write=False):
     ''' Execute JSON tools dependant on enabled features.
     add - should be dict/list (JSON)
     query - should be list of strings
@@ -93,6 +127,9 @@ def json_tools(file, add=None, backup=False, print_result=False, query=None, ver
         __verbose_print('Loading file to object', verbose)
         root = json.load(json_file)
     object = root if not query else __query(root=root, query_list=query, verbose=verbose)
+    found, object = (False, object) if not find else __find(root=object, attr_value=find, verbose=verbose)
+    if find and not found:
+        raise NameError('Could not find {} in the JSON document'.format(find))
     if add:
         __add(object=object, addition=add, verbose=verbose)
     if print_result:
@@ -110,6 +147,7 @@ if __name__ == '__main__':
     parser.add_argument('file', type=__is_valid_file, help='Path to target.')
     parser.add_argument('-a', '--add', type=__is_valid_json, help='Add JSON object(s) to existing object/list in the form of `{"key":"value}`. Can be used to overwrite attributes by adding a key with the same name.')
     parser.add_argument('-b', '--backup', action='store_true', help='Write a backup of file by appending .backup. If a backup already exist, then this step is skipped.')
+    parser.add_argument('-f', '--find', help='Find the first object that contains the supplied attribute value. Searches by default from root, otherwise the result from --query')
     parser.add_argument('-p', '--print_result', action='store_true', help='Print JSON file to stdout. In case of --query, will print the query result.')
     parser.add_argument('-q', '--query', type=__is_valid_query, help='Query an object in the form of `key.index.key` starting from root, Default = root.')
     parser.add_argument('-v', '--verbose', action='store_true', help='Print intermediate steps.')
