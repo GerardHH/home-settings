@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from os import getcwd
 from shutil import copyfile
 from sys import argv, stderr, stdout
-from typing import Iterable, Tuple, Union
+from typing import Dict, Iterable, List, Tuple, Union
 import argparse
 import json
 import os.path
@@ -15,20 +15,21 @@ import os.path
 # TODO: Document arguments of functions
 
 
-__JSON_TYPES = Union[bool, dict, float, int, list, str]
+__JSON_OBJECTS = Union[Dict, List]
+__JSON_TYPES = Union[bool, Dict, float, int, List, str]
 
 
-def __add(object, addition, verbose):
+def __add(object: __JSON_OBJECTS, addition: __JSON_OBJECTS, verbose: bool) -> None:
     '''Add addition JSON object to abject.'''
     __verbose_print('Adding to object', verbose)
-    if isinstance(object, Mapping):
+    if isinstance(object, dict):
         object.update(addition)
-    if isinstance(object, list):
+    elif isinstance(object, list):
         object.append(addition.copy())
     __verbose_print(object, verbose, False)
 
 
-def __backup(path, verbose):
+def __backup(path: str, verbose: bool) -> None:
     '''Backup path by appending .backup to path.'''
     verbose_print('Backing up', verbose)
     backup_path = '{}.backup'.format(path)
@@ -71,31 +72,31 @@ def __find(root: __JSON_TYPES, attr_value: str, verbose: bool) -> Tuple[bool, __
         return (root == attr_value, root)
 
 
-def __is_valid_file(path):
+def __is_valid_file(path: str) -> str:
     '''Check if path is a valid path to file.'''
     if os.path.isfile(path):
         return path
     raise argparse.ArgumentTypeError(path + ' is not a valid path')
 
 
-def __is_valid_json(string):
+def __is_valid_json(string: str) -> __JSON_OBJECTS:
     ''' Check if string is a valid JSON. '''
     return json.loads(string)
 
 
-def __is_valid_query(string):
+def __is_valid_query(string: str) -> List[str]:
     ''' Check if string is a valid point saperated query and return it. '''
     return string.split('.')
 
 
-def __print_object(object, verbose):
+def __print_object(object: __JSON_TYPES, verbose: bool) -> None:
     '''Print JSON or value.'''
     __verbose_print('Printing object', verbose)
     json.dump(object, stdout, indent=4)
     print('') # For some reason following prints will mess with the json.dump but printing a new line seems to fix it.
 
 
-def __query(root, query_list, verbose):
+def __query(root: __JSON_OBJECTS, query_list: List[str], verbose: bool) -> __JSON_TYPES:
     '''Query object based on query_list.'''
     __verbose_print('Querying object', verbose)
     object = root
@@ -106,7 +107,7 @@ def __query(root, query_list, verbose):
     return object
 
 
-def __verbose_print(printable, verbose, heading=True):
+def __verbose_print(printable, verbose: bool, heading: bool = True) -> None:
     '''Print if verbose is true in the form of --- printable --- if heading is True, without the - if heading is False.'''
     if verbose:
         if heading:
@@ -115,11 +116,8 @@ def __verbose_print(printable, verbose, heading=True):
             print(printable, file=stderr)
 
 
-def json_tools(file, add=None, backup=False, find=None, print_result=False, query=None, verbose=False, write=False):
-    ''' Execute JSON tools dependant on enabled features.
-    add - should be dict/list (JSON)
-    query - should be list of strings
-    '''
+def json_tools(file: str, add: __JSON_OBJECTS = None, backup: bool = False, find: str = None, print_result: bool = False, query: List[str] = None, verbose: bool = False, write: bool = False) -> None:
+    ''' Execute JSON tools dependant on enabled features. '''
     if backup:
         __backup(path=file, verbose=verbose)
     root = {}
