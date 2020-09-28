@@ -9,10 +9,12 @@ import argparse
 import json
 import os.path
 
+# TODO: Add unit tests
 # TODO: Add check if json is installed and report error if it isn't
 # TODO: Multiple objects for --add? Now it results in a cryptic error
 # TODO: Add check if file is readable JSON
 # TODO: Document arguments of functions
+# TODO: Add --find_key and change --find to --find_attribute
 
 
 __JSON_OBJECTS = Union[Dict, List]
