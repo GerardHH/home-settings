@@ -38,7 +38,7 @@ def __backup(path: str, verbose: bool) -> None:
     if not os.path.exists(backup_path):
         copyfile(path, backup_path)
     else:
-        print('Backup already exists, ignoring...')
+        __verbose_print('Backup already exists, ignoring...', verbose, False)
 
 
 def __find(root: __JSON_TYPES, attr_value: str, verbose: bool) -> Tuple[bool, __JSON_TYPES]:
