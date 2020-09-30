@@ -11,6 +11,6 @@ parser.add_argument('-e', '--enable', action='store_true', help='Enable supervis
 parser.add_argument('service', help='The service that will be disabled')
 args = parser.parse_args()
 
-query = 'services.{}'.format(args.service)
+query = ['services', args.service]
 add = {'startup': args.enable, 'restart': args.enable}
 json_tools.json_tools(file='{}/data/config/platforms/linux.json'.format(env.DESKTOP_CRUIZERPRO), add=add, query=query, write=True)
