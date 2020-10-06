@@ -10,6 +10,8 @@
 !bin/upgrade-all
 !vimfiles/
 
+.vim/.netrwhist
+
 # Raven
 !bin/disable_supervision.py
 !bin/env.py
