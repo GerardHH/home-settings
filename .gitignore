@@ -16,6 +16,7 @@
 !bin/disable_supervision.py
 !bin/env.py
 !bin/snoop
+!bin/start_job.py
 !bin/start_line_generator.py
 !bin/start_operation_planning_service.py
 !bin/start_system.py
