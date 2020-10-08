@@ -13,8 +13,8 @@
 .vim/.netrwhist
 
 # Raven
-!bin/disable_supervision.py
 !bin/env.py
 !bin/snoop
 !bin/start_service.py
+!bin/supervision.py
 !bin/sync_crx.py
