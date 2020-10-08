@@ -6,7 +6,7 @@
 !.profile
 !.vim/
 !.vimrc
-!bin/json_tools.py
+!bin/jsontools.py
 !bin/upgrade-all
 !vimfiles/
 

@@ -4,7 +4,7 @@ from os import system
 from typing import List
 import argparse
 import env
-import json_tools
+import jsontools
 
 
 def __check_known_service(service: str) -> str:
@@ -49,7 +49,7 @@ def __supervision(service: str, enable: bool, platform: str = 'linux'):
     ''' Enable/disable supervision for service in platform. '''
     query = ['services', service]
     add = {'startup': enable, 'restart': enable}
-    json_tools.json_tools(file='{}/data/config/platforms/{}.json'.format(env.DESKTOP_CRUIZERPRO, platform), add=add, query=query, write=True)
+    jsontools.json_tools(file='{}/data/config/platforms/{}.json'.format(env.DESKTOP_CRUIZERPRO, platform), add=add, query=query, write=True)
 
 
 if __name__ == '__main__':
