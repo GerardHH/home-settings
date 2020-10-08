@@ -17,4 +17,4 @@
 !bin/snoop
 !bin/startservice.py
 !bin/supervision.py
-!bin/sync_crx.py
+!bin/synccrx.py
