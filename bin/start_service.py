@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 import argparse
+import supervision
 import env
 from os import chdir, system
+from typing import List
 
 
 def __job(**other):
@@ -34,10 +36,14 @@ def __no_service_selected(**other):
     print('No service selected, please refer to ./start_service.py --help for more information')
 
 
-def __system(cruizerpro: bool = False, **other):
+def __system(cruizerpro: bool = False, disable: List[str] = None, enable: List[str] = None, **other):
     ''' Start the whole system in linux mode. Use the Booleans to overwrite the mode. '''
-    chdir(env.DESKTOP_CRUIZERPRO)
     mode = 'CRUIZERPRO' if cruizerpro else 'linux'
+    if enable:
+        supervision.__enable(services=enable)
+    if disable:
+        supervision.__disable(services=disable)
+    chdir(env.DESKTOP_CRUIZERPRO)
     system('./system.sh {} --demo'.format(mode))
 
 
@@ -64,6 +70,8 @@ if __name__ == '__main__':
     parser_operation_planning.set_defaults(func=__operation_planning)
 
     parser_system = subparsers.add_parser('system', help='Start the whole system, start the system in linux mode by default')
+    parser_system.add_argument('-d', '--disable', type=supervision.__list_of_services, help='Disable services before starting the system, provide multiple services as a point seperated list')
+    parser_system.add_argument('-e', '--enable', type=supervision.__list_of_services, help='Enable services before starting the system, provide multiple services as a point seperated list')
     parser_system_exclusive = parser_system.add_mutually_exclusive_group()
     parser_system_exclusive.add_argument('-c', '--cruizerpro', action='store_true', help='Start the system in CR7 mode')
     parser_system.set_defaults(func=__system)
