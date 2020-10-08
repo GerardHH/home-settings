@@ -6,3 +6,8 @@ SWDEV = '{}/swdev'.format(HOME)
 CRX = '{}/crx'.format(SWDEV)
 DESKTOP_CRUIZERPRO = '/opt/cruizerpro'
 REPO = '{}/bin/repo'.format(HOME)
+
+SERVICES = {'job': 'job',
+            'line-generator': 'line-generator',
+            'operation-planning': 'operation_planning_service',
+            'tango-cr12': 'tango-CR12'}
