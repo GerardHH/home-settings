@@ -18,3 +18,4 @@
 !bin/startservice.py
 !bin/supervision.py
 !bin/synccrx.py
+!bin/updateservice.py
