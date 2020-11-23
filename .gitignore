@@ -13,6 +13,7 @@
 .vim/.netrwhist
 
 # Raven
+!bin/builddbtree.py
 !bin/env.py
 !bin/snoop
 !bin/startservice.py
