@@ -70,8 +70,8 @@ if __name__ == '__main__':
     parser_operation_planning.set_defaults(func=__operation_planning)
 
     parser_system = subparsers.add_parser('system', help='Start the whole system, start the system in linux mode by default')
-    parser_system.add_argument('-d', '--disable', type=supervision.__list_of_services, help='Disable services before starting the system, provide multiple services as a point seperated list')
-    parser_system.add_argument('-e', '--enable', type=supervision.__list_of_services, help='Enable services before starting the system, provide multiple services as a point seperated list')
+    parser_system.add_argument('-d', '--disable', nargs='+', type=supervision.__check_known_service, help='Disable services before starting the system, provide multiple services as a point seperated list')
+    parser_system.add_argument('-e', '--enable', nargs='+', type=supervision.__check_known_service, help='Enable services before starting the system, provide multiple services as a point seperated list')
     parser_system_exclusive = parser_system.add_mutually_exclusive_group()
     parser_system_exclusive.add_argument('-c', '--cruizerpro', action='store_true', help='Start the system in CR7 mode')
     parser_system.set_defaults(func=__system)
