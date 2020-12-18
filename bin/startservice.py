@@ -7,6 +7,14 @@ from os import chdir, system
 from typing import List
 
 
+def __dataManager(**other):
+    ''' Start dataManager service. '''
+    dataManager = 'datamanager'
+    chdir('{}/{}'.format(env.DESKTOP_CRUIZERPRO, dataManager))
+    prog = './{} -m ipc:///tmp/cpro/mgt/dataManager.ipc -l ipc:///tmp/cpro/log.ipc --name dataManager -D DEBUG'.format(dataManager)
+    system(prog)
+
+
 def __job(**other):
     ''' Start JOB service. '''
     job = 'JOB'
@@ -59,6 +67,9 @@ if __name__ == '__main__':
     parser.set_defaults(func=__no_service_selected)
 
     subparsers = parser.add_subparsers(title='Service', description='Which service to start')
+
+    parser_dataManager = subparsers.add_parser('dataManager', help='Start dataManager service')
+    parser_dataManager.set_defaults(func=__dataManager)
 
     parser_job = subparsers.add_parser('job', help='Start the JOB service')
     parser_job.set_defaults(func=__job)

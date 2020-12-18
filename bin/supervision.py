@@ -10,7 +10,7 @@ import jsontools
 def __check_known_service(service: str) -> str:
     ''' Check if service is a supported service. '''
     try:
-        return env.SERVICES[service.lower()]
+        return env.SERVICES[service]
     except:
         raise argparse.ArgumentTypeError('Unknown service "{}", supported services are: {}'.format(service, env.SERVICES))
 
