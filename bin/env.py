@@ -13,5 +13,6 @@ SERVICES = {
     'job': 'job',
     'line-generator': 'line-generator',
     'operation-planning': 'operation_planning_service',
-    'tango-cr12': 'tango-CR12'
+    'tango-cr12': 'tango-CR12',
+    'zones': 'Zones'
     }

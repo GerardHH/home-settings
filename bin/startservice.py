@@ -61,6 +61,12 @@ def __tango(gammaray: bool = False, **other):
     prog = '{}./tango --mgt ipc:///tmp/cpro/mgt/tango-CR12.ipc --log ipc:///tmp/cpro/log.ipc --name tango'.format('gammaray ' if gammaray else '')
     system(prog)
 
+def __zones(**other):
+    ''' Start zones service. '''
+    zones = 'Zones'
+    chdir('{}/{}'.format(env.DESKTOP_CRUIZERPRO, zones))
+    prog = './{} -m ipc:///tmp/cpro/mgt/Zones.ipc -l ipc:///tmp/cpro/log.ipc --name Zones'.format(zones)
+    system(prog)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Start a service')
@@ -90,6 +96,9 @@ if __name__ == '__main__':
     parser_tango = subparsers.add_parser('tango', help='Start the tango service for CR12')
     parser_tango.add_argument('-g', '--gammaray', action='store_true', help='Start tango with gammaray')
     parser_tango.set_defaults(func=__tango)
+
+    parser_zones = subparsers.add_parser('zones', help='Start the Zones service')
+    parser_zones.set_defaults(func=__zones)
 
     args = parser.parse_args()
     args.func(**args.__dict__)
